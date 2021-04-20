@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>
+    <%= pageTitle %>
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/@clr/ui/clr-ui.min.css" />
+</head>
+
+<body cds-text="body">
+  <div class="main-container">
+    <header class="header-6">
+      <div class="branding">
+        <span class="title">
+          <%= pageTitle %>
+        </span>
+      </div>
+    </header>
+    <div class="content-container">
+      <div class="content-area">
+        <a role="button" class="btn btn-success" href="/">Home</a>
+        <h4>Seed Images: <%= images.length %>
+        </h4>
+        <div class="clr-row">
+          <% images.forEach((image)=> { %>
+          <div class="clr-col-lg-4 clr-col-12">
+              <div class="card">
+                <div class="card-img">
+                  <img src="images/<%= image.path %>" />
+                </div>
+                <div class="card-block">
+                  <div class="card-title">
+                  </div>
+                  <div class="card-text">
+                    <ul class="list">
+                      <li>Name: <%= image.name %>
+                      </li>
+                      <li>Created Date: <%= image.created %>
+                      </li>
+                      <li>Size: <%= image.size %>
+                      </li>
+                      <li>Path: <%= image.path %>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

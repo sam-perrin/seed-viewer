@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sam Perrin",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@cds/city": "^1.1.0",
     "@cds/core": "^5.0.1",

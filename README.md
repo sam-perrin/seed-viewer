@@ -36,6 +36,7 @@ sudo npm install
 The app requires an environment variable `IMG_DIR` to be set. 
 This is the directory that [phototimer](https://github.com/alexellis/phototimer) is outputting images to. 
 In my case this was `/seed/images`.
+Optionally you can pass in a `PORT`, by default this uses 3000. 
 
 ```bash
 IMG_DIR=/seed/images pm2 start /seed/app/seed-viewer/index.js --name seed-viewer
@@ -49,6 +50,8 @@ pm2 startup
 #Follow the directions outputted to setup pm2 startup
 pm2 save
 ```
+
+Access the app via the devices IP:Port: `http://IP:PORT`
 
 
 

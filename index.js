@@ -17,10 +17,7 @@ if (!img_dir) throw new Error("Missing ENV: IMG_DIR");
 console.log("Port: " + port);
 console.log("Image Directory: " + img_dir);
 
-// const seedImages = functions.getSeedImages(img_dir, null, img_dir);
-
 app.use(favicon(__dirname + '/public/favicon.ico'));
-
 app.get('/', (req, res) => {
     res.render('index', { pageTitle: "Seed Viewer", });
 });

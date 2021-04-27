@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>
+    <%= pageTitle %>
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/@clr/ui/clr-ui.min.css" />
+</head>
+
+<body cds-text="body">
+  <div class="main-container">
+    <header class="header-6">
+      <div class="branding">
+        <span class="title">
+          <%= pageTitle %>
+        </span>
+      </div>
+    </header>
+    <div class="content-container">
+      <div class="content-area">
+        <a role="button" class="btn btn-success" href="/">Home</a>
+        <h4>Showing the most recent Seed images (<%= seeds.length %>).
+        </h4>
+        <div class="clr-row">
+          <% seeds.forEach((seed)=> { %>
+            <div class="clr-col-lg-2 clr-col-12">
+              <div class="card">
+                <div class="card-img">
+                  <img src="<%= seed.thumbnailDir %>/gallery_<%= seed.thumbnailName %>" />
+                </div>
+                <% if (viewOriginal) { %>
+                  <div class="card-block">
+                    <div class="card-text">
+                      <form class="clr-form" action="/images/<%= seed.imagePath %>" method="get">
+                        <div class="row">
+                          <button class="btn btn-primary" type="submit" value="View Original">View Original</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <% } %>
+              </div>
+            </div>
+            <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

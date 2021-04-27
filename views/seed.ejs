@@ -21,34 +21,28 @@
     <div class="content-container">
       <div class="content-area">
         <a role="button" class="btn btn-success" href="/">Home</a>
-        <h4>Seed Images: <%= images.length %>
+        <h4>Showing the most recent Seed image.
         </h4>
         <div class="clr-row">
-          <% images.forEach((image)=> { %>
-          <div class="clr-col-lg-2 clr-col-12">
+            <div class="clr-col-lg-6 clr-col-12">
               <div class="card">
                 <div class="card-img">
-                  <img src="images/<%= image.path %>" />
+                  <img src="<%= seed.thumbnailDir %>/latest_<%= seed.thumbnailName %>" />
                 </div>
-                <div class="card-block">
-                  <div class="card-title">
+                  <div class="card-block">
+                    <div class="card-text">
+                      <ul class="list">
+                        <li>Name: <%= seed.name %>
+                        </li>
+                        <li>Created Date: <%= seed.created %>
+                        </li>
+                        <li>Size: <%= seed.size %>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="card-text">
-                    <ul class="list">
-                      <li>Name: <%= image.name %>
-                      </li>
-                      <li>Created Date: <%= image.created %>
-                      </li>
-                      <li>Size: <%= image.size %>
-                      </li>
-                      <li>Path: <%= image.path %>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
               </div>
-          </div>
-          <% }); %>
+            </div>
         </div>
       </div>
     </div>

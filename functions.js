@@ -16,9 +16,10 @@ function generateGalleryThumbnails(imageDataArray) {
     imageDataArray.forEach((imageData) => {
         if (!imageData.thumbnailDir || !imageData.thumbnailName || !imageData.name || !imageData.fullPath) return new Error("Missing required image data");
         // let thumbnailLocation = "public/" + imageData.thumbnailDir + "/gallery_" + imageData.thumbnailName;
-        let thumbnailLocation = thumbnail_dir + "/gallery_" + imageData.thumbnailName;
-        console.log(thumbnailLocation);
+        let thumbnailLocation = thumbnail_dir + "gallery_" + imageData.thumbnailName;
+        console.log("Gallery thumbnail location: " + thumbnailLocation);
         if (!fs.existsSync(thumbnailLocation)) {
+            console.log("Preparing file write for " + thumbnailLocation);
             sharp(imageData.fullPath)
                 .resize({ height: 200 })
                 .toFile(thumbnailLocation)
@@ -26,7 +27,7 @@ function generateGalleryThumbnails(imageDataArray) {
                     console.log(`Thumbnail generation complete (${imageData.name})`);
                 });
         } else {
-            console.log(`File exists (${imageData.name})`);
+            console.log(`File exists (${imageData.name}) (${thumbnailLocation})`);
         }
     })
 }
@@ -34,9 +35,10 @@ function generateGalleryThumbnails(imageDataArray) {
 function generateLatestThumbnail(imageData) {
     if (!imageData.thumbnailDir || !imageData.thumbnailName || !imageData.name || !imageData.fullPath) return new Error("Missing required image data");
     // let thumbnailLocation = "public/" + imageData.thumbnailDir + "/latest_" + imageData.thumbnailName;
-    let thumbnailLocation = thumbnail_dir + "/latest_" + imageData.thumbnailName;
-    console.log(thumbnailLocation);
+    let thumbnailLocation = thumbnail_dir + "latest_" + imageData.thumbnailName;
+    console.log("Latest thumbnail location: " + thumbnailLocation);
     if (!fs.existsSync(thumbnailLocation)) {
+        console.log("Preparing file write for " + thumbnailLocation);
         sharp(imageData.fullPath)
             .resize({ height: 1000 })
             .toFile(thumbnailLocation)
@@ -44,7 +46,7 @@ function generateLatestThumbnail(imageData) {
                 console.log(`Latest image generation complete (${imageData.name})`);
             });
     } else {
-        console.log(`File exists (${imageData.name})`);
+        console.log(`File exists (${imageData.name}) (${thumbnailLocation})`);
     }
 }
 

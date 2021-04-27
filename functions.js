@@ -3,7 +3,8 @@ const fs = require('fs');
 const path = require('path')
 const sharp = require('sharp')
 
-const thumbnail_dir = "./public/thumbnails/";
+const thumbnail_dir = __dirname + "/public/thumbnails/";
+console.log(thumbnail_dir)
 checkThumbailDir(thumbnail_dir);
 function checkThumbailDir(thumbnailPath) {
     if (!fs.existsSync(thumbnailPath)) {

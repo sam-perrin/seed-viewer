@@ -13,25 +13,29 @@ function checkThumbailDir(thumbnailPath) {
 }
 
 function generateGalleryThumbnails(imageDataArray) {
-    imageDataArray.forEach((image) => {
-        if (!image.thumbnailDir || !image.thumbnailName || !image.name || !image.fullPath) return new Error("Missing required image data");
-        let thumbnailLocation = "public/" + image.thumbnailDir + "/gallery_" + image.thumbnailName;
+    imageDataArray.forEach((imageData) => {
+        if (!imageData.thumbnailDir || !imageData.thumbnailName || !imageData.name || !imageData.fullPath) return new Error("Missing required image data");
+        // let thumbnailLocation = "public/" + imageData.thumbnailDir + "/gallery_" + imageData.thumbnailName;
+        let thumbnailLocation = thumbnail_dir + "/gallery_" + imageData.thumbnailName;
+        console.log(thumbnailLocation);
         if (!fs.existsSync(thumbnailLocation)) {
-            sharp(image.fullPath)
+            sharp(imageData.fullPath)
                 .resize({ height: 200 })
                 .toFile(thumbnailLocation)
                 .then(data => {
-                    console.log(`Thumbnail generation complete (${image.name})`);
+                    console.log(`Thumbnail generation complete (${imageData.name})`);
                 });
         } else {
-            console.log(`File exists (${image.name})`);
+            console.log(`File exists (${imageData.name})`);
         }
     })
 }
 
 function generateLatestThumbnail(imageData) {
     if (!imageData.thumbnailDir || !imageData.thumbnailName || !imageData.name || !imageData.fullPath) return new Error("Missing required image data");
-    let thumbnailLocation = "public/" + imageData.thumbnailDir + "/latest_" + imageData.thumbnailName;
+    // let thumbnailLocation = "public/" + imageData.thumbnailDir + "/latest_" + imageData.thumbnailName;
+    let thumbnailLocation = thumbnail_dir + "/latest_" + imageData.thumbnailName;
+    console.log(thumbnailLocation);
     if (!fs.existsSync(thumbnailLocation)) {
         sharp(imageData.fullPath)
             .resize({ height: 1000 })
